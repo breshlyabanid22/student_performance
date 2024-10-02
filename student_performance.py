@@ -15,49 +15,61 @@ The purpose of this exploration is to gain insights into the key factors influen
 
 # File uploader
 uploaded_file = st.file_uploader("Choose a CSV file", type="csv")
+
+# Initialize session state for toggling dataset preview
+if 'show_preview' not in st.session_state:
+    st.session_state.show_preview = False
+
 if uploaded_file is not None:
     df = pd.read_csv(uploaded_file)
 
-    # Display dataset preview
-    st.subheader("Dataset Preview")
-    st.write("Here is a quick preview of the dataset:")
-    st.dataframe(df)
+    # Button to toggle Dataset Preview visibility
+    if st.button("Show/Hide Dataset Preview"):
+        st.session_state.show_preview = not st.session_state.show_preview
+
+    # Display dataset preview if toggle is set to True
+    if st.session_state.show_preview:
+        st.subheader("Dataset Preview")
+        st.write("Here is a quick preview of the dataset:")
+        st.dataframe(df)
 
     # Select numeric columns for analysis
     numeric_cols = df.select_dtypes(include=[int, float])
 
-    # Visualizations Section
+    # Visualization selection dropdown
     st.header("Visualizations")
+    graph_type = st.selectbox("Choose the type of graph:", ["Histogram", "Box Plot", "Correlation Heatmap"])
 
-    # Histograms
-    st.subheader("Histograms of Numeric Columns")
-    st.write("These histograms show the distribution of various numeric variables in the dataset.")
-    fig, axes = plt.subplots(len(numeric_cols.columns), 1, figsize=(8, 4 * len(numeric_cols.columns)))
-    for i, col in enumerate(numeric_cols.columns):
-        axes[i].hist(df[col], bins=10, color='skyblue')
-        axes[i].set_title(f"Histogram of {col}", fontsize=14)
-        axes[i].set_xlabel(col, fontsize=12)  # X-axis label
-        axes[i].set_ylabel("Frequency", fontsize=12)  # Y-axis label
+    # Display visualizations based on selected type
+    if graph_type == "Histogram":
+        st.subheader("Histograms of Numeric Columns")
+        st.write("These histograms show the distribution of various numeric variables in the dataset.")
+        fig, axes = plt.subplots(len(numeric_cols.columns), 1, figsize=(8, 4 * len(numeric_cols.columns)))
+        for i, col in enumerate(numeric_cols.columns):
+            axes[i].hist(df[col], bins=10, color='skyblue')
+            axes[i].set_title(f"Histogram of {col}", fontsize=14)
+            axes[i].set_xlabel(col, fontsize=12)  # X-axis label
+            axes[i].set_ylabel("Frequency", fontsize=12)  # Y-axis label
 
-    plt.tight_layout()
-    st.pyplot(fig)
+        plt.tight_layout()
+        st.pyplot(fig)
 
-    # Box plots
-    st.subheader("Box Plots of Numeric Columns")
-    st.write("These box plots help visualize the spread and outliers for the numeric columns.")
-    fig, axes = plt.subplots(len(numeric_cols.columns), 1, figsize=(8, 4 * len(numeric_cols.columns)))
-    for i, col in enumerate(numeric_cols.columns):
-        sns.boxplot(data=numeric_cols, y=col, ax=axes[i], color='lightgreen')
-        axes[i].set_title(f"Box Plot of {col}")
-    st.pyplot(fig)
+    elif graph_type == "Box Plot":
+        st.subheader("Box Plots of Numeric Columns")
+        st.write("These box plots help visualize the spread and outliers for the numeric columns.")
+        fig, axes = plt.subplots(len(numeric_cols.columns), 1, figsize=(8, 4 * len(numeric_cols.columns)))
+        for i, col in enumerate(numeric_cols.columns):
+            sns.boxplot(data=numeric_cols, y=col, ax=axes[i], color='lightgreen')
+            axes[i].set_title(f"Box Plot of {col}")
+        st.pyplot(fig)
 
-    # Correlation Heatmap
-    st.subheader("Correlation Heatmap")
-    st.write("This heatmap displays the correlation between numeric variables in the dataset.")
-    corr_matrix = numeric_cols.corr()
-    fig, ax = plt.subplots(figsize=(8, 6))
-    sns.heatmap(corr_matrix, annot=True, cmap="coolwarm", linewidths=0.5, ax=ax)
-    st.pyplot(fig)
+    elif graph_type == "Correlation Heatmap":
+        st.subheader("Correlation Heatmap")
+        st.write("This heatmap displays the correlation between numeric variables in the dataset.")
+        corr_matrix = numeric_cols.corr()
+        fig, ax = plt.subplots(figsize=(8, 6))
+        sns.heatmap(corr_matrix, annot=True, cmap="coolwarm", linewidths=0.5, ax=ax)
+        st.pyplot(fig)
 
     # Conclusion Section
     st.header("Conclusion")
