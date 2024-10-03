@@ -61,7 +61,7 @@ elif page == "Histograms":
         elif col == "StudyHoursPerWeek":
             expander.write(f"""
                 The histogram could show that most students study between 15 and 20 hours per week, with a few outliers like (30 hours) and (8 hours).
-                The graph might have a peak around 15–20 hours, which would indicate that the majority of students study a moderate amount of time.
+                The graph might have a peak around 15-20 hours, which would indicate mostly of students study a moderate amount of time.
             """)
         elif col == "PreviousGrade":
             expander.write(f"""
