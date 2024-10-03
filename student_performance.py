@@ -56,11 +56,7 @@ if graph_type == "Histogram":
     
     for col in numeric_cols.columns:
         st.subheader(f"Histogram of {col}")
-        if col == "StudentID":
-            st.write(f"""
-                It's a Headcounts of students, This histogram will be uniform, with each student ID appearing exactly once. The frequency will be 1 for each ID, so the graph will show a series of bars of height 1.
-            """)
-        elif col == "AttendanceRate":
+        if col == "AttendanceRate":
             st.write(f"""
                 Attendance rates are clustered in the high range (mostly 80-95), You might see a peak in the 85-95 range, indicating that many students have good attendance.
             """)   
