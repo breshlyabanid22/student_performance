@@ -27,8 +27,8 @@ if st.session_state.show_preview:
 numeric_cols = df.select_dtypes(include=[int, float])
 
 # Sidebar - Choose Page
-st.sidebar.title("Navigate to")
-page = st.sidebar.radio("Select a page:", ["Home", "Histograms", "Box Plot", "Correlation Heatmap"])
+st.sidebar.header("Visualization")
+page = st.sidebar.radio("Navigate to a page:", ["Home", "Histograms", "Box Plot", "Correlation Heatmap"])
 
 if page == "Home":
     st.title("Student Performance Data Exploration")
