@@ -2,6 +2,9 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_squared_error
 
 # Load dataset
 df = pd.read_csv('student_performance.csv')
@@ -28,7 +31,7 @@ numeric_cols = df.select_dtypes(include=[int, float])
 
 # Sidebar - Choose Page
 st.sidebar.header("Visualization")
-page = st.sidebar.radio("Navigate to a page:", ["Home", "Histograms", "Box Plot", "Correlation Heatmap"])
+page = st.sidebar.radio("Navigate to a page:", ["Home", "Histograms", "Box Plot", "Correlation Heatmap", "Grade Prediction"])
 
 if page == "Home":
     st.title("Student Performance Data Exploration")
@@ -153,6 +156,41 @@ elif page == "Correlation Heatmap":
             interpretation = interpret_correlation(var1, var2, corr_value)
             expander = st.expander(f"See Interpretation for {var1} vs {var2}")
             expander.write(interpretation)
+
+elif page == "Grade Prediction":
+    st.header("Predict Student Final Grade Based on Key Factors")
+    
+    # Input features for grade prediction
+    st.write("Enter the values for the features below to predict the final grade:")
+    
+    attendance_rate = st.number_input("Attendance Rate", min_value=0, max_value=100, value=85)
+    study_hours = st.number_input("Study Hours per Week", min_value=0, max_value=40, value=15)
+    prev_grade = st.number_input("Previous Grade", min_value=0, max_value=100, value=80)
+    extracurricular = st.number_input("Extracurricular Activities (0-3 scale)", min_value=0, max_value=3, value=2)
+    
+    # Prepare data for prediction
+    X = df[['AttendanceRate', 'StudyHoursPerWeek', 'PreviousGrade', 'ExtracurricularActivities']]
+    y = df['FinalGrade']
+    
+    # Train-test split
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+    
+    # Fit Linear Regression Model
+    model = LinearRegression()
+    model.fit(X_train, y_train)
+    
+    # Predict final grade based on input
+    input_features = pd.DataFrame([[attendance_rate, study_hours, prev_grade, extracurricular]], 
+                                  columns=['AttendanceRate', 'StudyHoursPerWeek', 'PreviousGrade', 'ExtracurricularActivities'])
+    predicted_grade = model.predict(input_features)[0]
+    
+    # Display predicted grade
+    st.write(f"**Predicted Final Grade**: {predicted_grade:.2f}")
+    
+    # Show model performance
+    y_pred = model.predict(X_test)
+    mse = mean_squared_error(y_test, y_pred)
+    st.write(f"**Model Mean Squared Error**: {mse:.2f}")
 
 # Conclusion Section
 conclusion = st.sidebar.checkbox("Conclusion")
