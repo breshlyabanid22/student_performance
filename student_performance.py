@@ -246,7 +246,7 @@ elif page == "Line Chart":
             with st.expander(f"{name}'s Grades "):
                 st.write(f"**Previous Grade**: {previous_grade}")
                 st.write(f"**Final Grade**: {final_grade}")
-                st.write({interpretation})
+                st.write(interpretation)
 
     with col2:
         for index, row in df_right.iterrows():
@@ -258,7 +258,7 @@ elif page == "Line Chart":
             with st.expander(f"{name}'s Grades"):
                 st.write(f"**Previous Grade**: {previous_grade}")
                 st.write(f"**Final Grade**: {final_grade}")
-                st.write({interpretation})
+                st.write(interpretation)
     
 
 
