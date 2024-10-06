@@ -243,10 +243,10 @@ elif page == "Line Chart":
             final_grade = row['FinalGrade']
             
             interpretation = interpret_grades(previous_grade, final_grade, name)
-            with st.expander(f"{name}'s Grades Interpretation"):
+            with st.expander(f"{name}'s Grades "):
                 st.write(f"**Previous Grade**: {previous_grade}")
                 st.write(f"**Final Grade**: {final_grade}")
-                st.write(f"**Interpretation**: {interpretation}")
+                st.write({interpretation})
 
     with col2:
         for index, row in df_right.iterrows():
@@ -255,10 +255,10 @@ elif page == "Line Chart":
             final_grade = row['FinalGrade']
             
             interpretation = interpret_grades(previous_grade, final_grade, name)
-            with st.expander(f"{name}'s Grades Interpretation"):
+            with st.expander(f"{name}'s Grades"):
                 st.write(f"**Previous Grade**: {previous_grade}")
                 st.write(f"**Final Grade**: {final_grade}")
-                st.write(f"**Interpretation**: {interpretation}")
+                st.write({interpretation})
     
 
 
