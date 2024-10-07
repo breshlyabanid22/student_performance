@@ -58,7 +58,6 @@ elif page == "Histograms":
     st.pyplot(fig)
 
     for col in numeric_cols.columns:
-        st.subheader(f"Histogram of {col}")
         if col == "AttendanceRate":
             with st.expander(f"{col}'s Histograms "):
                 st.write(f"""
@@ -67,31 +66,35 @@ elif page == "Histograms":
                     Overall, most students have attendance rates above 80%, indicating that attendance is not a major issue for the majority.
                 """)   
         elif col == "StudyHoursPerWeek":
-            st.write(f"""
-                Olivia studies the most with 30 hours per week, followed by Michael with 25 hours and Isabella with 22 hours.
-                Daniel studies the least at only 8 hours per week, which could also contribute to his lower grades.
-                Most other students have study hours between 10 to 20 hours, which seems to correspond reasonably well with their final grades, showing that study hours tend to have a positive impact.
-            """)
+            with st.expander(f"{col}'s Histograms "):
+                st.write(f"""
+                    Olivia studies the most with 30 hours per week, followed by Michael with 25 hours and Isabella with 22 hours.
+                    Daniel studies the least at only 8 hours per week, which could also contribute to his lower grades.
+                    Most other students have study hours between 10 to 20 hours, which seems to correspond reasonably well with their final grades, showing that study hours tend to have a positive impact.
+                """)
         elif col == "PreviousGrade":
-            st.write(f"""
-                Michael has the highest previous grade of 90, followed by Olivia at 88 and Isabella at 86. These students consistently perform well academically.
-                Daniel has the lowest previous grade at 60, which correlates with his lower attendance rate and fewer study hours.
-                Overall, the previous grades align with students' attendance rates and study hours, reinforcing that commitment and time spent studying are key factors in academic performance.
-            """)
+            with st.expander(f"{col}'s Histograms "):
+                st.write(f"""
+                    Michael has the highest previous grade of 90, followed by Olivia at 88 and Isabella at 86. These students consistently perform well academically.
+                    Daniel has the lowest previous grade at 60, which correlates with his lower attendance rate and fewer study hours.
+                    Overall, the previous grades align with students' attendance rates and study hours, reinforcing that commitment and time spent studying are key factors in academic performance.
+                """)
         elif col == "ExtracurricularActivities":
-            st.write(f"""
-                Michael and Isabella are involved in the most extracurricular activities, with 3 activities each, and they both have very high final grades (92 and 88, respectively).
-                Sarah and Emma participate in 2 extracurricular activities, and they also maintain high final grades (87 and 85).
-                John, Olivia, and Sophia are involved in 1 extracurricular activity each, and their grades are relatively high as well.
-                Alex and Daniel are not involved in any extracurricular activities, and they have some of the lowest final grades (68 and 62, respectively).
-            """)    
+            with st.expander(f"{col}'s Histograms "):
+                st.write(f"""
+                    Michael and Isabella are involved in the most extracurricular activities, with 3 activities each, and they both have very high final grades (92 and 88, respectively).
+                    Sarah and Emma participate in 2 extracurricular activities, and they also maintain high final grades (87 and 85).
+                    John, Olivia, and Sophia are involved in 1 extracurricular activity each, and their grades are relatively high as well.
+                    Alex and Daniel are not involved in any extracurricular activities, and they have some of the lowest final grades (68 and 62, respectively).
+                """)    
         elif col == "FinalGrade":
-            st.write(f"""
-                Michael again has the highest final grade of 92, showing consistent performance and slight improvement over his previous grade of 90.
-                Isabella and Olivia both have strong final grades of 88 and 90, indicating steady improvement from their previous grades.
-                Daniel has the lowest final grade of 62, showing that his performance hasn’t improved much and may even be a concern.
-                Alex and James also have lower final grades (68 and 72 respectively), though both showed some improvement from their previous grades. This suggests that while they may have made some progress, they could still benefit from increased study time or attendance.
-            """)
+            with st.expander(f"{col}'s Histograms "):
+                st.write(f"""
+                    Michael again has the highest final grade of 92, showing consistent performance and slight improvement over his previous grade of 90.
+                    Isabella and Olivia both have strong final grades of 88 and 90, indicating steady improvement from their previous grades.
+                    Daniel has the lowest final grade of 62, showing that his performance hasn’t improved much and may even be a concern.
+                    Alex and James also have lower final grades (68 and 72 respectively), though both showed some improvement from their previous grades. This suggests that while they may have made some progress, they could still benefit from increased study time or attendance.
+                """)
 
 elif page == "Box Plot":
     if st.session_state.show_preview:
