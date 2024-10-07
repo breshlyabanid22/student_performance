@@ -249,9 +249,9 @@ elif page == "Line Chart":
             final_grade = row['FinalGrade']
             
             interpretation = interpret_grades(previous_grade, final_grade, name)
-            with st.expander(f"{name}'s Grades "):
-                st.write(f"**Previous Grade**: {previous_grade}")
-                st.write(f"**Final Grade**: {final_grade}")
+            with st.expander(f"**{name}'s Grades**"):
+                st.write(f"Previous Grade: {previous_grade}")
+                st.write(f"Final Grade: {final_grade}")
                 st.write(interpretation)
 
     with col2:
@@ -261,9 +261,9 @@ elif page == "Line Chart":
             final_grade = row['FinalGrade']
             
             interpretation = interpret_grades(previous_grade, final_grade, name)
-            with st.expander(f"{name}'s Grades"):
-                st.write(f"**Previous Grade**: {previous_grade}")
-                st.write(f"**Final Grade**: {final_grade}")
+            with st.expander(f"**{name}'s Grades**"):
+                st.write(f"Previous Grade: {previous_grade}")
+                st.write(f"Final Grade: {final_grade}")
                 st.write(interpretation)
     
 
