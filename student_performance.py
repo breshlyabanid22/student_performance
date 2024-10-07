@@ -59,28 +59,28 @@ elif page == "Histograms":
 
     for col in numeric_cols.columns:
         if col == "AttendanceRate":
-            with st.expander(f"{col}'s Histograms "):
+            with st.expander(f"**{col}'s Histograms**"):
                 st.write(f"""
                     Olivia has the highest attendance rate at 95%, followed by Michael at 92% and Isabella at 91%.
                     Daniel has the lowest attendance rate at 70%. This could indicate that his lower grades are partly influenced by a lack of attendance.
                     Overall, most students have attendance rates above 80%, indicating that attendance is not a major issue for the majority.
                 """)   
         elif col == "StudyHoursPerWeek":
-            with st.expander(f"{col}'s Histograms "):
+            with st.expander(f"**{col}'s Histograms**"):
                 st.write(f"""
                     Olivia studies the most with 30 hours per week, followed by Michael with 25 hours and Isabella with 22 hours.
                     Daniel studies the least at only 8 hours per week, which could also contribute to his lower grades.
                     Most other students have study hours between 10 to 20 hours, which seems to correspond reasonably well with their final grades, showing that study hours tend to have a positive impact.
                 """)
         elif col == "PreviousGrade":
-            with st.expander(f"{col}'s Histograms "):
+            with st.expander(f"**{col}'s Histograms**"):
                 st.write(f"""
                     Michael has the highest previous grade of 90, followed by Olivia at 88 and Isabella at 86. These students consistently perform well academically.
                     Daniel has the lowest previous grade at 60, which correlates with his lower attendance rate and fewer study hours.
                     Overall, the previous grades align with students' attendance rates and study hours, reinforcing that commitment and time spent studying are key factors in academic performance.
                 """)
         elif col == "ExtracurricularActivities":
-            with st.expander(f"{col}'s Histograms "):
+            with st.expander(f"**{col}'s Histograms**"):
                 st.write(f"""
                     Michael and Isabella are involved in the most extracurricular activities, with 3 activities each, and they both have very high final grades (92 and 88, respectively).
                     Sarah and Emma participate in 2 extracurricular activities, and they also maintain high final grades (87 and 85).
@@ -88,7 +88,7 @@ elif page == "Histograms":
                     Alex and Daniel are not involved in any extracurricular activities, and they have some of the lowest final grades (68 and 62, respectively).
                 """)    
         elif col == "FinalGrade":
-            with st.expander(f"{col}'s Histograms "):
+            with st.expander(f"**{col}'s Histograms**"):
                 st.write(f"""
                     Michael again has the highest final grade of 92, showing consistent performance and slight improvement over his previous grade of 90.
                     Isabella and Olivia both have strong final grades of 88 and 90, indicating steady improvement from their previous grades.
@@ -110,35 +110,38 @@ elif page == "Box Plot":
     st.pyplot(fig)
     
     for col in numeric_cols.columns:
-        st.subheader(f"Box Plot of {col}")
-        expander = st.expander("See Interpretation")
         if col == "AttendanceRate":
-            expander.write(f"""
-                The box will show the range of attendance rates (likely between 70 and 95).
-                The median (middle 50%) is likely around 85-90, indicating that most students have a high attendance rate.
-            """)   
+            with st.expander(f"**Box Plot of {col}**"):
+                st.write(f"""
+                    The box will show the range of attendance rates (likely between 70 and 95).
+                    The median (middle 50%) is likely around 85-90, indicating that most students have a high attendance rate.
+                """)   
         elif col == "StudyHoursPerWeek":
-            expander.write(f"""
-                The box plot will show a range from the minimum (8 hours) to the maximum (30 hours).
-                The median is likely around 15-20 hours, meaning that half of the students study within this range.
-                The lower quartile (Q1) might indicate students who study around 10 hours or fewer, while the upper quartile (Q3) may include students studying around 20+ hours.
-            """)
+            with st.expander(f"**Box Plot of {col}**"):
+                st.write(f"""
+                    The box plot will show a range from the minimum (8 hours) to the maximum (30 hours).
+                    The median is likely around 15-20 hours, meaning that half of the students study within this range.
+                    The lower quartile (Q1) might indicate students who study around 10 hours or fewer, while the upper quartile (Q3) may include students studying around 20+ hours.
+                """)
         elif col == "PreviousGrade":
-            expander.write(f"""
-                The box plot will show previous grades ranging from 60 (minimum) to 90 (maximum).
-                The median might fall around 80, indicating that most students previously performed well.
-            """)
+            with st.expander(f"**Box Plot of {col}**"):
+                st.write(f"""
+                    The box plot will show previous grades ranging from 60 (minimum) to 90 (maximum).
+                    The median might fall around 80, indicating that most students previously performed well.
+                """)
         elif col == "ExtracurricularActivities":
-            expander.write(f"""
-                The box plot here will show levels from 0 (no extracurricular involvement) to 3 (high involvement).
-                The median might fall around 1 or 2, indicating that most students are moderately involved in extracurricular activities.
-                The box plot might have a wide spread, as some students are not involved at all (0), while others are very involved (3).
-            """)    
+            with st.expander(f"**Box Plot of {col}**"):
+                st.write(f"""
+                    The box plot here will show levels from 0 (no extracurricular involvement) to 3 (high involvement).
+                    The median might fall around 1 or 2, indicating that most students are moderately involved in extracurricular activities.
+                    The box plot might have a wide spread, as some students are not involved at all (0), while others are very involved (3).
+                """)    
         elif col == "FinalGrade":
-            expander.write(f"""
-                The box plot will show final grades ranging from around 62 (minimum) to 92 (maximum).
-                The median is likely around 85-90, suggesting that many students perform well.
-            """)
+            with st.expander(f"**Box Plot of {col}**"):
+                st.write(f"""
+                    The box plot will show final grades ranging from around 62 (minimum) to 92 (maximum).
+                    The median is likely around 85-90, suggesting that many students perform well.
+                """)
 
 
 elif page == "Correlation Heatmap":
@@ -175,7 +178,7 @@ elif page == "Correlation Heatmap":
             var2 = numeric_cols.columns[j]
             corr_value = corr_matrix.loc[var1, var2]
             interpretation = interpret_correlation(var1, var2, corr_value)
-            expander = st.expander(f"{var1} vs {var2}")
+            expander = st.expander(f"**{var1} vs {var2}**")
             expander.write(interpretation)
 
 elif page == "Grade Prediction":
