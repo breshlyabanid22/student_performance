@@ -155,17 +155,17 @@ elif page == "Correlation Heatmap":
 
     def interpret_correlation(var1, var2, corr_value):
         if corr_value > 0.7:
-            return f"**{var1} vs {var2}:** Strong positive correlation ({corr_value:.2f}). This indicates that as {var1} increases, {var2} tends to increase significantly."
+            return f"Strong positive correlation ({corr_value:.2f}). This indicates that as {var1} increases, {var2} tends to increase significantly."
         elif 0.3 < corr_value <= 0.7:
-            return f"**{var1} vs {var2}:** Moderate positive correlation ({corr_value:.2f}). This suggests that there is a positive relationship between {var1} and {var2}, but it's not very strong."
+            return f"Moderate positive correlation ({corr_value:.2f}). This suggests that there is a positive relationship between {var1} and {var2}, but it's not very strong."
         elif 0 < corr_value <= 0.3:
-            return f"**{var1} vs {var2}:** Weak positive correlation ({corr_value:.2f}). There is a slight positive relationship between {var1} and {var2}."
+            return f"Weak positive correlation ({corr_value:.2f}). There is a slight positive relationship between {var1} and {var2}."
         elif corr_value < -0.7:
-            return f"**{var1} vs {var2}:** Strong negative correlation ({corr_value:.2f}). This suggests that as {var1} increases, {var2} tends to decrease significantly."
+            return f"Strong negative correlation ({corr_value:.2f}). This suggests that as {var1} increases, {var2} tends to decrease significantly."
         elif -0.7 <= corr_value < -0.3:
-            return f"**{var1} vs {var2}:** Moderate negative correlation ({corr_value:.2f}). This suggests a negative relationship between {var1} and {var2}, but not very strong."
+            return f"Moderate negative correlation ({corr_value:.2f}). This suggests a negative relationship between {var1} and {var2}, but not very strong."
         elif -0.3 <= corr_value < 0:
-            return f"**{var1} vs {var2}:** Weak negative correlation ({corr_value:.2f}). There's a slight negative relationship between {var1} and {var2}."
+            return f"Weak negative correlation ({corr_value:.2f}). There's a slight negative relationship between {var1} and {var2}."
         else:
             return f"**{var1} vs {var2}:** No significant correlation ({corr_value:.2f}). These variables do not seem to be linearly related."
 
