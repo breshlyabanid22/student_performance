@@ -175,7 +175,7 @@ elif page == "Correlation Heatmap":
             var2 = numeric_cols.columns[j]
             corr_value = corr_matrix.loc[var1, var2]
             interpretation = interpret_correlation(var1, var2, corr_value)
-            expander = st.expander(f"See Interpretation for {var1} vs {var2}")
+            expander = st.expander(f"{var1} vs {var2}")
             expander.write(interpretation)
 
 elif page == "Grade Prediction":
