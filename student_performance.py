@@ -59,8 +59,9 @@ elif page == "Histograms":
 
     for col in numeric_cols.columns:
         st.subheader(f"Histogram of {col}")
-        expander = st.expander("See Interpretation")
+        
         if col == "AttendanceRate":
+            expander = st.expander("See Interpretation")
             expander.write(f"""
                 Olivia has the highest attendance rate at 95%, followed by Michael at 92% and Isabella at 91%.
                 Daniel has the lowest attendance rate at 70%. This could indicate that his lower grades are partly influenced by a lack of attendance.
