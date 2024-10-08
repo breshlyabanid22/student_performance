@@ -19,10 +19,7 @@ if 'StudentID' in df.columns:
 if 'show_preview' not in st.session_state:
     st.session_state.show_preview = False
 
-
-
 numeric_cols = df.select_dtypes(include=[int, float])
-
 
 main_page = st.sidebar.radio("**Navigate to a page:**", ["Home", "Visualization", "Grade Prediction", "Conclusion"])
 
