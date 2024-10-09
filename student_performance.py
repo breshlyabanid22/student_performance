@@ -69,8 +69,8 @@ elif main_page == "Conclusion":
         st.subheader("Dataset Preview")
         st.write("Here is a quick preview of the dataset:")
         st.dataframe(df)
+    st.header("Conclusion")
     container = st.container(border=True)
-    container.title("Conclusion")
     container.write("""
     Based on the analysis of the student performance dataset, we can observe several key insights:
     1. Attendance and Final Grade Correlation:
@@ -95,9 +95,9 @@ elif main_page == "Conclusion":
         High parental support correlates with higher final grades, as seen in students having "High" support. 
         Lower levels of parental support, such as "Low" are associated with lower final grades (62, 68, 72).
     """)
-    
+
+    st.header("Insights")
     container1 = st.container(border=True)
-    container1.header("Insights")
     container1.write(f"""
         The female students in the dataset generally have slightly better final grades (87 to 90 range) than their male counterparts (62 to 92 range). However, this could be influenced by other factors like attendance, study hours, and support.
         These insights can help educators focus on key areas to improve student outcomes.""")
