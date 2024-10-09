@@ -103,7 +103,7 @@ elif main_page == "Conclusion":
     
 elif main_page == "Visualization":
     
-visual_type = st.sidebar.selectbox("Choose a Visualization Type", ["Histogram", "Box Plot", "Correlation Heatmap", "Line Chart"])
+    visual_type = st.sidebar.selectbox("Choose a Visualization Type", ["Histogram", "Box Plot", "Correlation Heatmap", "Line Chart"])
     if visual_type == "Histogram":
         if st.session_state.show_preview:
             st.subheader("Dataset Preview")
