@@ -70,7 +70,8 @@ elif main_page == "Conclusion":
         st.write("Here is a quick preview of the dataset:")
         st.dataframe(df)
     st.title("Conclusion")
-    st.write("""
+    container = st.container(border=True)
+    container.write("""
     Based on the analysis of the student performance dataset, we can observe several key insights:
     1. Attendance and Final Grade Correlation:
         Students with higher attendance rates generally have higher final grades (88-92).
@@ -96,7 +97,7 @@ elif main_page == "Conclusion":
     """)
 
     st.header("Insights")
-    st.write(f"""
+    container.write(f"""
         The female students in the dataset generally have slightly better final grades (87 to 90 range) than their male counterparts (62 to 92 range). However, this could be influenced by other factors like attendance, study hours, and support.
         These insights can help educators focus on key areas to improve student outcomes.""")
     
