@@ -103,7 +103,7 @@ elif main_page == "Conclusion":
     
 elif main_page == "Visualization":
     
-    visual_type = st.sidebar.selectbox("**Chosse a Visualization Type**", ["Histogram","Box Plot", "Correlation Heatmap", "Line Chart"])
+visual_type = st.sidebar.selectbox("Choose a Visualization Type", ["Histogram", "Box Plot", "Correlation Heatmap", "Line Chart"])
     if visual_type == "Histogram":
         if st.session_state.show_preview:
             st.subheader("Dataset Preview")
@@ -159,8 +159,7 @@ elif main_page == "Visualization":
                         Alex and James also have lower final grades (68 and 72 respectively), though both showed some improvement from their previous grades. This suggests that while they may have made some progress, they could still benefit from increased study time or attendance.
                     """)
 
-
-    if visual_type == "Box Plot":
+    elif visual_type == "Box Plot":
         if st.session_state.show_preview:
             st.subheader("Dataset Preview")
             st.write("Here is a quick preview of the dataset:")
@@ -208,7 +207,7 @@ elif main_page == "Visualization":
                     """)
 
 
-    if visual_type == "Correlation Heatmap":
+    elif visual_type == "Correlation Heatmap":
         if st.session_state.show_preview:
             st.subheader("Dataset Preview")
             st.write("Here is a quick preview of the dataset:")
@@ -246,7 +245,7 @@ elif main_page == "Visualization":
                 expander.write(interpretation)
 
 
-    if visual_type == "Line Chart":
+    elif visual_type == "Line Chart":
         if st.session_state.show_preview:
             st.subheader("Dataset Preview")
             st.write("Here is a quick preview of the dataset:")
